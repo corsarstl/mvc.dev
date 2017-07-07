@@ -17,6 +17,8 @@ function __autoload($class_name) {
     } else {
         throw new Exception('Failed to include class: '.$class_name);
     }
+}
 
-
+function __($key, $default_value = '') {
+    return Lang::get($key, $default_value = '');
 }
