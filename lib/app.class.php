@@ -4,6 +4,8 @@ class App {
 
     protected static $router;
 
+    public static $db;
+
     /**
      * @return mixed
      */
@@ -16,6 +18,8 @@ class App {
     {
         self::$router = new Router($uri);
 
+        self::$db = new DB(Config::get('db.host'), Config::get('db.user'), Config::get('db.password'), Config::get('db.db_name'));
+
         Lang::load(self::$router->getLanguage());
 
         $controller_class = ucfirst(self::$router->getController()).'Controller';
@@ -23,7 +27,7 @@ class App {
 
         //Calling controller's method
         $controller_object = new $controller_class();
-        if(method_exists($controller_object, $controller_method)) {
+        if (method_exists($controller_object, $controller_method)) {
             //Controller's action may return a view path
             $view_path = $controller_object->$controller_method();
             $view_object = new View($controller_object->getData(), $view_path);
