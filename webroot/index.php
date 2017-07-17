@@ -22,6 +22,8 @@ $router = new Router($_SERVER['REQUEST_URI']);
 
 //Session::setFlash('Test flash message');
 
+session_start();
+
 App::run($_SERVER['REQUEST_URI']);
 
 //$test = App::$db->query('select * from pages');
