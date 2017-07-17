@@ -20,6 +20,8 @@ $router = new Router($_SERVER['REQUEST_URI']);
 //echo 'Params: ';
 //print_r($router->getParams());
 
+//Session::setFlash('Test flash message');
+
 App::run($_SERVER['REQUEST_URI']);
 
 //$test = App::$db->query('select * from pages');
